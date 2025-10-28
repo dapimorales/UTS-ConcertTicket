@@ -16,5 +16,10 @@ namespace UTS_ConcertTicket.UI
         {
             InitializeComponent();
         }
+
+        private void Frm_ManageAccounts_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

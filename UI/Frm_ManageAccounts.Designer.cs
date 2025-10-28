@@ -106,6 +106,7 @@
             Controls.Add(label1);
             Name = "Frm_ManageAccounts";
             Text = "Frm_ManageAccounts";
+            Load += Frm_ManageAccounts_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAccounts).EndInit();
             ResumeLayout(false);
             PerformLayout();
