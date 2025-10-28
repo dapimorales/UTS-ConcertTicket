@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UTS_ConcertTicket.Models
+namespace UTS_ConcertTicket.DataAccess
 {
-    internal class Ticket
+    internal class ApplicationDbContext
     {
     }
 }

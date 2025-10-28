@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UTS_ConcertTicket.Forms
+namespace UTS_ConcertTicket.UI
 {
-    public partial class FormLogin : Form
+    public partial class Frm_MainDashboard : Form
     {
-        public FormLogin()
+        public Frm_MainDashboard()
         {
             InitializeComponent();
         }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UTS_ConcertTicket.Models
+namespace UTS_ConcertTicket.BusinessLogic
 {
-    internal class Concert
+    internal class ConcertService
     {
     }
 }
