@@ -72,6 +72,7 @@
             btnAddAccount.TabIndex = 3;
             btnAddAccount.Text = "Add Account";
             btnAddAccount.UseVisualStyleBackColor = true;
+            btnAddAccount.Click += btnAddAccount_Click;
             // 
             // btnEditAccount
             // 
@@ -82,6 +83,7 @@
             btnEditAccount.TabIndex = 4;
             btnEditAccount.Text = "Edit Account";
             btnEditAccount.UseVisualStyleBackColor = true;
+            btnEditAccount.Click += btnEditAccount_Click;
             // 
             // btnDeleteAccount
             // 
@@ -92,6 +94,7 @@
             btnDeleteAccount.TabIndex = 5;
             btnDeleteAccount.Text = "Delete Account";
             btnDeleteAccount.UseVisualStyleBackColor = true;
+            btnDeleteAccount.Click += btnDeleteAccount_Click;
             // 
             // Frm_ManageAccounts
             // 
@@ -106,7 +109,6 @@
             Controls.Add(label1);
             Name = "Frm_ManageAccounts";
             Text = "Frm_ManageAccounts";
-            Load += Frm_ManageAccounts_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAccounts).EndInit();
             ResumeLayout(false);
             PerformLayout();
