@@ -78,8 +78,13 @@ namespace UTS_ConcertTicket.UI
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.DialogResult= DialogResult.Cancel;
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void Frm_InputAccount_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -166,6 +166,7 @@
             Controls.Add(label1);
             Name = "Frm_InputAccount";
             Text = "Frm_InputAccount";
+            Load += Frm_InputAccount_Load;
             ResumeLayout(false);
             PerformLayout();
         }

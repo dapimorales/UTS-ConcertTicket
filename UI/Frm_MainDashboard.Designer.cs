@@ -90,6 +90,7 @@
             Controls.Add(label1);
             Name = "Frm_MainDashboard";
             Text = "Concert Ticketing - Admin Panel";
+            Load += Frm_MainDashboard_Load;
             ResumeLayout(false);
             PerformLayout();
         }

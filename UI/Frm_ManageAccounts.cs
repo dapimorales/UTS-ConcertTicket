@@ -86,8 +86,8 @@ namespace UTS_ConcertTicket.UI
         private async void btnDeleteAccount_Click(object sender, EventArgs e)
         {
             if (dgvAccounts.CurrentRow == null) return;
-            var selectedAccountId = (int)dgvAccounts.CurrentRow.Cells ["ID"].Value;
-            var username = dgvAccounts.CurrentRow.Cells ["username"].Value;
+            var selectedAccountId = (int)dgvAccounts.CurrentRow.Cells["ID"].Value;
+            var username = dgvAccounts.CurrentRow.Cells["username"].Value;
             var result = MessageBox.Show($"Yakin ingin menghapus akun '{username}'?", "Konfirmasi Hapus", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
@@ -103,6 +103,11 @@ namespace UTS_ConcertTicket.UI
                     MessageBox.Show($"Gagal menghapus akun : {ex.Message}", "Kesalahan");
                 }
             }
+        }
+
+        private void Frm_ManageAccounts_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
