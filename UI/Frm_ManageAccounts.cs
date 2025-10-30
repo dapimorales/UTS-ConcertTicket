@@ -8,12 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
+using UTS_ConcertTicket.Models;
+using UTS_ConcertTicket.BusinessLogic;
 
 namespace UTS_ConcertTicket.UI
 {
     public partial class Frm_ManageAccounts : Form
     {
-        private readonly AccountService accountService;
+        private readonly AccountService AccountService;
         private readonly IServiceProvider serviceProvider;
 
         public Frm_ManageAccounts(AccountService accountService, IServiceProvider serviceProvider)
@@ -64,7 +66,7 @@ namespace UTS_ConcertTicket.UI
         //add account
         private async void btnAddAccount_Click(object sender, EventArgs e)
         {
-            using (var inputForm = _serviceProvider.GetRequiredService<Frm_InputAccount>())
+            using (var inputForm = serviceProvider.GetRequiredService<Frm_InputAccount>())
             {
                 if (inputForm.ShowDialog() == DialogResult.OK)
                 {
