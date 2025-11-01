@@ -86,4 +86,10 @@ namespace UTS_ConcertTicket.UI
         {
             await LoadTickets();
         }
+
+        private void Frm_ManageTickets_Load(object sender, EventArgs e)
+        {
+
+        }
     }
+}

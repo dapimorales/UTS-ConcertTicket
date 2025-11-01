@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using UTS_ConcertTicket.Models;
 
 namespace UTS_ConcertTicket.UI
 {
@@ -40,8 +41,8 @@ namespace UTS_ConcertTicket.UI
             txt_Artis.Text = concert.Artis;
             dtp_TanggalWaktu.Value = concert.TanggalWaktu;
             txt_Lokasi.Text = concert.Lokasi;
-            num_HargaDasar.Value = concert.HargaDasar;
-            num_TotalStok.Value = concert.TotalStok;
+            num_HargaDasar.Value = Decimal.Parse(concert.HargaDasar.ToString());
+            num_TotalStok.Value = concert.TotalPenonton;
             // Catatan: Jika edit, TotalStok harus hati-hati agar tidak kurang dari (TotalStok - StokTersedia)
         }
 
@@ -54,8 +55,8 @@ namespace UTS_ConcertTicket.UI
                 ConcertData.Artis = txt_Artis.Text;
                 ConcertData.TanggalWaktu = dtp_TanggalWaktu.Value;
                 ConcertData.Lokasi = txt_Lokasi.Text;
-                ConcertData.HargaDasar = num_HargaDasar.Value;
-                ConcertData.TotalStok = (int)num_TotalStok.Value;
+                ConcertData.HargaDasar = Double.Parse(num_HargaDasar.Value.ToString());
+                ConcertData.TotalPenonton = (int) num_TotalStok.Value;
 
                 // Jika ini form tambah, StokTersedia akan diisi di Service.
                 // Jika ini form edit, pastikan StokTersedia juga diperbarui jika TotalStok bertambah.
@@ -80,3 +81,4 @@ namespace UTS_ConcertTicket.UI
 
         }
     }
+}

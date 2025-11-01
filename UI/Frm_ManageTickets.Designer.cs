@@ -123,6 +123,7 @@
             Controls.Add(label1);
             Name = "Frm_ManageTickets";
             Text = "Frm_ManageTickets";
+            Load += Frm_ManageTickets_Load;
             ((System.ComponentModel.ISupportInitialize)dgv_Tickets).EndInit();
             ResumeLayout(false);
             PerformLayout();

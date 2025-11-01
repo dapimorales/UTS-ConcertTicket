@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using UTS_ConcertTicket.BusinessLogic;
+using UTS_ConcertTicket.Models;
 
 namespace UTS_ConcertTicket.UI
 {
@@ -33,7 +34,7 @@ namespace UTS_ConcertTicket.UI
             try
             {
                 // Ambil semua data dari Business Service dan simpan di variabel lokal
-                _allConcerts = await _concertService.GetConcerts();
+                _allConcerts = await _concertService.GetAllConcertsAsync();
 
                 // Tampilkan semua data ke Grid
                 DisplayConcerts(_allConcerts);
@@ -71,7 +72,7 @@ namespace UTS_ConcertTicket.UI
                     try
                     {
                         // Panggil Business Service untuk menyimpan data baru
-                        await ConcertService.CreateConcert(inputForm.ConcertData);
+                        await _concertService.CreateConcertAsync(inputForm.ConcertData);
                         MessageBox.Show("Konser berhasil ditambahkan!", "Sukses");
                         await LoadConcerts(); // Refresh
                     }
@@ -104,7 +105,7 @@ namespace UTS_ConcertTicket.UI
                     try
                     {
                         // Panggil Business Service untuk mengupdate data
-                        await ConcertService.UpdateConcert(inputForm.ConcertData);
+                        await _concertService.UpdateConcertAsync(inputForm.ConcertData);
                         MessageBox.Show("Konser berhasil diperbarui!", "Sukses");
                         await LoadConcerts(); // Refresh
                     }
@@ -130,7 +131,7 @@ namespace UTS_ConcertTicket.UI
             {
                 try
                 {
-                    await ConcertService.DeleteConcert(selectedId);
+                    await _concertService.DeleteConcertAsync(selectedId);
                     MessageBox.Show("Konser berhasil dihapus.", "Sukses");
                     await LoadConcerts(); // Refresh
                 }

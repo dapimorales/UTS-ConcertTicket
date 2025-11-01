@@ -39,11 +39,8 @@ namespace UTS_ConcertTicket.Models
         // Properti ini digunakan Entity Framework Core untuk mengambil data relasi (JOIN)
 
         // Relasi Many-to-One dengan Concert
-        [ForeignKey("ConcertId")]
         public Concert Concert { get; set; }
 
-        // Relasi Many-to-One dengan Account (Pembeli)
-        [ForeignKey("AccountId")]
         public Account Account { get; set; }
     }
 }
