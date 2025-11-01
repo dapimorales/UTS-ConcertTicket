@@ -16,13 +16,13 @@ namespace UTS_ConcertTicket.UI
     public partial class Frm_ManageAccounts : Form
     {
         private readonly AccountService AccountService;
-        private readonly IServiceProvider serviceProvider;
+        private readonly IServiceProvider ServiceProvider;
 
         public Frm_ManageAccounts(AccountService accountService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            _accountService = accountService;
-            _serviceProvider = serviceProvider;
+            AccountService = accountService;
+            ServiceProvider = serviceProvider;
             //memanggil loadaccount pertama kali di muat
             this.Load += async (s, e) => await LoadAccount();
         }
@@ -31,7 +31,7 @@ namespace UTS_ConcertTicket.UI
             try
             {
                 // Ambil semua akun dari Service Layer
-                var accounts = await _accountService.GetAllAccountsAsync();
+                var accounts = await AccountService.GetAllAccountsAsync();
 
                 // Tampilkan data di DataGridView (hanya kolom yang relevan)
                 dgvAccounts.DataSource = accounts.Select(a => new
@@ -54,7 +54,7 @@ namespace UTS_ConcertTicket.UI
         {
             if (dgvAccounts.CurrentRow == null) return;
             var selectedAccountId = (int)dgvAccounts.CurrentRow.Cells["ID"].Value;
-            var accountToEdit = await _accountsService.GetAccountsByIdAsync(selectedAccountId);
+            var accountToEdit = await AccountService.GetAccountsByIdAsync(selectedAccountId);
 
             if (accountToEdit == null)
             {
@@ -66,14 +66,14 @@ namespace UTS_ConcertTicket.UI
         //add account
         private async void btnAddAccount_Click(object sender, EventArgs e)
         {
-            using (var inputForm = serviceProvider.GetRequiredService<Frm_InputAccount>())
+            using (var inputForm = ServiceProvider.GetRequiredService<Frm_InputAccount>())
             {
                 if (inputForm.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
                         //memanggil service untuk menyimpan data akun baru 
-                        await _accountService.CreateAccountAsync(inputForm.AccountData);
+                        await AccountService.CreateAccountAsync(inputForm.AccountData);
                         MessageBox.Show("Akun berhasil ditambahkan", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         await LoadAccount();
                     }
@@ -96,7 +96,7 @@ namespace UTS_ConcertTicket.UI
             {
                 try
                 {
-                    await _accountService.DeleteAccountAsync(selectedAccountId);
+                    await AccountService.DeleteAccountAsync(selectedAccountId);
                     MessageBox.Show("Akun berhasil di hapus", "Sukses");
                     await LoadAccount();
                 }

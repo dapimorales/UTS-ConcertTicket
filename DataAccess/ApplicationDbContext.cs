@@ -5,9 +5,9 @@ using UTS_ConcertTicket.Models;
 
 public class ApplicationDbContext : DbContext
 {
-    public DbSet<Account> Accounts { get; set; }
-    public DbSet<Concert> Concerts { get; set; }
-    public DbSet<Ticket> Tickets { get; set; }
+    public DbSet<Account> Accounts => Set<Account>();
+    public DbSet<Concert> Concerts => Set<Concert>();
+    public DbSet<Ticket> Tickets => Set<Ticket>();
 
     private readonly string _connectionString;
 

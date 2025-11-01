@@ -1,6 +1,4 @@
-﻿
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
@@ -61,7 +59,7 @@ public class AccountRepository
     }
 
 
-    //  Memeriksa apakah Username sudah digunakan (Untuk CREATE)
+    //  Memeriksa apakah Username sudah digunakan 
     public async Task<bool> IsUsernameTakenAsync(string username)
     {
         // EF Core: Mencari apakah ada akun dengan username yang sama
@@ -69,7 +67,7 @@ public class AccountRepository
                              .AnyAsync(a => a.Username == username);
     }
 
-    //  Memeriksa apakah Akun sudah memiliki transaksi tiket (Untuk DELETE)
+    //  Memeriksa apakah Akun sudah memiliki transaksi tiket buat delete
     public async Task<bool> HasTicketsAsync(int accountId)
     {
         // EF Core: Mencari di tabel Tickets apakah ada Foreign Key yang merujuk ke Account ID ini

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace UTS_ConcertTicket.Models
 {
-    internal class Ticket
+    public class Ticket
     {
+
     }
 }

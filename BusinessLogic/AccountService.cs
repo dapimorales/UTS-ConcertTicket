@@ -85,5 +85,10 @@ namespace UTS_ConcertTicket.BusinessLogic
 
             await _repository.DeleteAsync(account);
         }
+
+        public async Task<Account> GetAccountsByIdAsync(int selectedAccountId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

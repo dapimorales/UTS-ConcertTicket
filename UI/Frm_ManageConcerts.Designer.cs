@@ -102,6 +102,7 @@
             Controls.Add(label1);
             Name = "Frm_ManageConcerts";
             Text = "Frm_ManageConcerts";
+            Load += Frm_ManageConcerts_Load;
             ((System.ComponentModel.ISupportInitialize)dgvConcerts).EndInit();
             ResumeLayout(false);
             PerformLayout();

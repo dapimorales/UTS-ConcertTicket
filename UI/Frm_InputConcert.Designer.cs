@@ -78,9 +78,9 @@
             label4.AutoSize = true;
             label4.Location = new Point(29, 373);
             label4.Name = "label4";
-            label4.Size = new Size(93, 25);
+            label4.Size = new Size(152, 25);
             label4.TabIndex = 3;
-            label4.Text = "Total Stok:";
+            label4.Text = "Jumlah Penonton:";
             // 
             // txt_NamaKonser
             // 

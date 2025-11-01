@@ -18,7 +18,7 @@ namespace UTS_ConcertTicket.UI
         private readonly IServiceProvider _serviceProvider; // Diperlukan untuk membuat Frm_InputConcert via DI
         private List<Concert> _allConcerts; // Menyimpan semua data untuk keperluan filter
 
-        public Frm_ManageConcerts(ConcertService concertService, IServiceProvider serviceProvider)
+        public Frm_ManageConcerts (ConcertService concertService, IServiceProvider serviceProvider)
         {
             InitializeComponent();
             _concertService = concertService;
@@ -47,7 +47,7 @@ namespace UTS_ConcertTicket.UI
         // Metode Helper untuk menampilkan data (dipanggil oleh LoadConcerts dan Filter)
         private void DisplayConcerts(List<Concert> concerts)
         {
-            dgv_Concerts.DataSource = concerts.Select(c => new
+            dgvConcerts.DataSource = concerts.Select(c => new
             {
                 c.Id,
                 c.NamaKonser,
@@ -56,7 +56,7 @@ namespace UTS_ConcertTicket.UI
                 c.Lokasi,
                 c.HargaDasar,
                 c.StokTersedia,
-                c.TotalStok
+                c.TotalPenonton
             }).ToList();
         }
 
@@ -71,7 +71,7 @@ namespace UTS_ConcertTicket.UI
                     try
                     {
                         // Panggil Business Service untuk menyimpan data baru
-                        await _concertService.CreateConcert(inputForm.ConcertData);
+                        await ConcertService.CreateConcert(inputForm.ConcertData);
                         MessageBox.Show("Konser berhasil ditambahkan!", "Sukses");
                         await LoadConcerts(); // Refresh
                     }
@@ -86,10 +86,10 @@ namespace UTS_ConcertTicket.UI
         // Tombol Edit (U)
         private async void btn_EditConcert_Click(object sender, EventArgs e)
         {
-            if (dgv_Concerts.CurrentRow == null) return;
+            if (dgvConcerts.CurrentRow == null) return;
 
             // Ambil ID konser yang dipilih
-            var selectedId = (int)dgv_Concerts.CurrentRow.Cells["Id"].Value;
+            var selectedId = (int)dgvConcerts.CurrentRow.Cells["Id"].Value;
             // Cari objek Konser dari daftar lokal
             var concertToEdit = _allConcerts.FirstOrDefault(c => c.Id == selectedId);
 
@@ -104,7 +104,7 @@ namespace UTS_ConcertTicket.UI
                     try
                     {
                         // Panggil Business Service untuk mengupdate data
-                        await _concertService.UpdateConcert(inputForm.ConcertData);
+                        await ConcertService.UpdateConcert(inputForm.ConcertData);
                         MessageBox.Show("Konser berhasil diperbarui!", "Sukses");
                         await LoadConcerts(); // Refresh
                     }
@@ -119,9 +119,9 @@ namespace UTS_ConcertTicket.UI
         // Tombol Hapus (D)
         private async void btn_DeleteConcert_Click(object sender, EventArgs e)
         {
-            if (dgv_Concerts.CurrentRow == null) return;
+            if (dgvConcerts.CurrentRow == null) return;
 
-            var selectedId = (int)dgv_Concerts.CurrentRow.Cells["Id"].Value;
+            var selectedId = (int)dgvConcerts.CurrentRow.Cells["Id"].Value;
 
             var confirm = MessageBox.Show("Yakin ingin menghapus konser ini? Tindakan ini tidak dapat dibatalkan.", "Konfirmasi",
                                           MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -130,7 +130,7 @@ namespace UTS_ConcertTicket.UI
             {
                 try
                 {
-                    await _concertService.DeleteConcert(selectedId);
+                    await ConcertService.DeleteConcert(selectedId);
                     MessageBox.Show("Konser berhasil dihapus.", "Sukses");
                     await LoadConcerts(); // Refresh
                 }
@@ -148,7 +148,7 @@ namespace UTS_ConcertTicket.UI
         // Fungsi Pencarian/Filter (R)
         private void txt_SearchConcert_TextChanged(object sender, EventArgs e)
         {
-            string searchText = txt_SearchConcert.Text.ToLowerInvariant();
+            string searchText = txtSearchConcert.Text.ToLowerInvariant();
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
@@ -166,4 +166,10 @@ namespace UTS_ConcertTicket.UI
                 DisplayConcerts(filteredList);
             }
         }
+
+        private void Frm_ManageConcerts_Load(object sender, EventArgs e)
+        {
+
+        }
     }
+}
